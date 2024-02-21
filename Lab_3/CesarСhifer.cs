@@ -10,14 +10,18 @@ namespace Lab_3
     {
         private readonly Dictionary<char, char> CesarChief;
         private const string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+
         public CesarChifer()
         {
             CesarChief = new Dictionary<char, char>();
-         
+            CreateCesarChief(CesarChief);
+        }
+        private void CreateCesarChief(Dictionary<char, char> CesarChief)
+        {
             //запись алфавита в массив чаров
             List<char> mixedAlphabet = new List<char>();
-            for (int i = 0; i < alphabet.Length; i++)
-                mixedAlphabet.Add(alphabet[i]);
+            CreateAlphabetCharList(mixedAlphabet);
+
 
             Random random = new Random();
             //написать всё одним циклом for
@@ -27,6 +31,12 @@ namespace Lab_3
                 CesarChief[alphabet[i]] = mixedAlphabet[rand];
                 mixedAlphabet.RemoveAt(rand);
             }
+        }
+        public void CreateAlphabetCharList(List<char> list)
+        {
+            //запись алфавита в массив чаров
+            for (int i = 0; i < alphabet.Length; i++)
+                list.Add(alphabet[i]);
         }
         public string Decrypt(string input)
         {
