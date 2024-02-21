@@ -13,33 +13,29 @@ namespace Lab_3
         public CesarChifer()
         {
             CesarChief = new Dictionary<char, char>();
-
+         
             //запись алфавита в массив чаров
-            char[] mixedAlphabet = new char[alphabet.Length];
+            List<char> mixedAlphabet = new List<char>();
             for (int i = 0; i < alphabet.Length; i++)
-                mixedAlphabet[i] = alphabet[i];
+                mixedAlphabet.Add(alphabet[i]);
 
             Random random = new Random();
-
-            //рандомное перемешивание алфавита
-            for (int i = mixedAlphabet.Length - 1; i >= 1; i--)
+            //написать всё одним циклом for
+            for (int i = alphabet.Length - 1; i >= 0; i--)
             {
-                int j = random.Next(i + 1);
-                char temp = mixedAlphabet[j];
-                mixedAlphabet[j] = mixedAlphabet[i];
-                mixedAlphabet[i] = temp;
+                int rand = random.Next(i + 1);
+                CesarChief[alphabet[i]] = mixedAlphabet[rand];
+                mixedAlphabet.RemoveAt(rand);
             }
-
-            //создание словаря из алфавита и перемешенного алфавита ключ/значение
-            for (int i = 0; i < alphabet.Length; i++)
-                CesarChief[alphabet[i]] = mixedAlphabet[i];
         }
         public string Decrypt(string input)
         {
             string result = "";
+            char value;
             foreach (char c in input)
             {
-                result += CesarChief[c];
+                CesarChief.TryGetValue(c, out value);
+                result += value;
             }
             return result;
         }

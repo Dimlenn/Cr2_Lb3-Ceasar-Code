@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CesarChifer.cs" />
+    <Compile Include="CesarСhifer.cs" />
     <Compile Include="CesarCodeForm.cs">
       <SubType>Form</SubType>
     </Compile>
