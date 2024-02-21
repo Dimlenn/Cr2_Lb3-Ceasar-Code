@@ -53,6 +53,7 @@
     <Compile Include="CesarCodeForm.Designer.cs">
       <DependentUpon>CesarCodeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlphabetStructCreator.cs" />
     <Compile Include="FormExtensions.cs" />
     <Compile Include="IChifer.cs" />
     <Compile Include="Program.cs" />
